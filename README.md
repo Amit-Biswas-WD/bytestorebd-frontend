@@ -305,8 +305,8 @@ App will be running at **http://localhost:3000**
 
 ## 👤 Author
 
-**Your Name**
-[Portfolio](#) · [LinkedIn](#) · [GitHub](#)
+**Amit Biswas**
+[Portfolio](https://amitbiswas.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/amit-biswas-web) · [GitHub](https://github.com/Amit-Biswas-WD)
 
 ---
 
