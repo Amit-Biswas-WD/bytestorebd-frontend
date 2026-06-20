@@ -135,6 +135,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { useProductSlider } from "@/hooks/useProductSlider";
 
@@ -145,6 +146,7 @@ interface Product {
   currentPrice: number;
   originalPrice: number | null;
   discountAmount?: number | null;
+  slug?: string;
 }
 
 interface ProductCardProps {
@@ -166,7 +168,7 @@ const ProductCard = ({
     "bg-white text-gray-300 border-gray-200 cursor-not-allowed";
 
   return (
-    <div className="container">
+    <div className="">
       {/* Section Header */}
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl md:text-3xl font-bold">{heading}</h2>
@@ -209,12 +211,15 @@ const ProductCard = ({
         `}</style>
 
         {products.map((product) => {
-          const { id, title, imageSrc, currentPrice, originalPrice } = product;
+          const { id, title, imageSrc, currentPrice, originalPrice, slug } =
+            product;
+          const productSlug = slug || id;
 
           return (
-            <div
+            <Link
+              href={`/product/${productSlug}`}
               key={id}
-              className="w-[calc(100%/1.53-1rem)] md:w-[calc(100%/3.53-1rem)] lg:w-[calc(100%/4.53-1rem)] flex-shrink-0 border border-gray-200/80 rounded-2xl bg-white shadow-[0_0_20px_0_rgba(0,0,0,0.04)] transition-all duration-300 hover:shadow-[0_0_25px_2px_rgba(0,0,0,0.06)] flex flex-col justify-between snap-start"
+              className="w-[calc(100%/1.53-1rem)] md:w-[calc(100%/3.53-1rem)] lg:w-[calc(100%/4.53-1rem)] flex-shrink-0 border border-gray-200/80 rounded-2xl bg-white shadow-[0_0_20px_0_rgba(0,0,0,0.04)] transition-all duration-300 hover:shadow-[0_0_25px_2px_rgba(0,0,0,0.06)] flex flex-col justify-between snap-start cursor-pointer"
             >
               <div className="flex flex-col h-full bg-white rounded-xl overflow-hidden">
                 <div className="relative flex h-[180px] sm:h-[220px] md:h-[260px] w-full items-center justify-center overflow-hidden rounded-xl p-2">
@@ -253,7 +258,7 @@ const ProductCard = ({
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>

@@ -5,7 +5,7 @@ import ProductCard from "../product/ProductCard";
 
 const NewTrends = () => {
   return (
-    <div className="container">
+    <div className="site-container">
       <ProductCard products={productsCards} />
 
       {/* <ProductCard heading="Our New Trends" products={productsCards} /> */}

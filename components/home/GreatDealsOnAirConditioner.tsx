@@ -4,7 +4,7 @@ import ProductCard from "../product/ProductCard";
 
 const GreatDealsOnAirConditioner = () => {
   return (
-    <div className="container">
+    <div className="site-container">
       <ProductCard
         heading="Great Deals on Air Conditioners"
         products={productsCards}

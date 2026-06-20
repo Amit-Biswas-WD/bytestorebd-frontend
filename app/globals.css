@@ -65,7 +65,7 @@
    :root — Light Mode
    ════════════════════════════════════════════════════════════ */
 :root {
-  /* Shadcn defaults (unchanged) */
+  /* Shadcn defaults */
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -146,7 +146,7 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 
-  /* Brand — dark mode তেও same থাকে */
+  /* Brand */
   --brand:         #F27F20;
   --brand-hover:   #d96e10;
   --site-bg:       #0a0a0a;
@@ -158,43 +158,20 @@
 }
 
 /* ════════════════════════════════════════════════════════════
-   @layer base
+   @layer base — Global Styles
    ════════════════════════════════════════════════════════════ */
 @layer base {
 
-  .container {
+  /* 🎯 আপনার নিখুঁত 1440px কন্টেইনার ক্লাস */
+  .site-container {
     width: 100%;
     max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
-    padding: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
-  @media (min-width: 640px) {
-    .container {
-    padding: 16px;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .container {
-         padding: 16px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .container {
-         padding: 16px;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .container {
-    padding: 16px;
-    }
-  }
-
-  /* global styles */
   * {
     @apply border-border outline-ring/50;
   }
@@ -207,7 +184,7 @@
   }
 
   html {
-    @apply font-sans; /* এটি এখন স্বয়ংক্রিয়ভাবে Inter ফন্ট ব্যবহার করবে */
+    @apply font-sans;
     scroll-behavior: smooth;
   }
 

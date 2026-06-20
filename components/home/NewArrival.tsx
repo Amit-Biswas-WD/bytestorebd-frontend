@@ -5,7 +5,7 @@ import ProductCard from "../product/ProductCard";
 
 const NewArrival = () => {
   return (
-    <div className="container">
+    <div className="site-container">
       <ProductCard heading="New Arrival" products={productsCards} />
     </div>
   );

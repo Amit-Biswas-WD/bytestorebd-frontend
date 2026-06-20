@@ -5,7 +5,7 @@ import ProductCard from "../product/ProductCard";
 
 const RechargeableFan = () => {
   return (
-    <div className="container">
+    <div className="site-container">
       <ProductCard heading="Rechargeable Fan" products={productsCards} />
     </div>
   );

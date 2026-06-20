@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center">
       Home
-      <div className="">
+      <div className="space-y-14 w-full">
         <FeaturedCategories />
         <NewTrends />
         <FeaturedProducts />
