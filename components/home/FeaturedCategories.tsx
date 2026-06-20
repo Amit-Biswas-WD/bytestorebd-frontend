@@ -2,6 +2,7 @@
 
 import { featuredCategories } from "@/lib/categories/categories";
 import Image from "next/image";
+import Link from "next/link";
 
 const FeaturedCategories = () => {
   return (
@@ -12,7 +13,8 @@ const FeaturedCategories = () => {
 
       <div className="grid grid-cols-3 gap-6 sm:grid-cols-4 lg:grid-cols-8">
         {featuredCategories.map((category) => (
-          <div
+          <Link
+            href={`/category/${category.slug}`}
             key={category.id}
             className="group flex cursor-pointer flex-col items-center rounded-lg p-2 transition-all hover:shadow-md"
           >
@@ -26,7 +28,7 @@ const FeaturedCategories = () => {
             </div>
 
             <h3 className="text-center text-xs font-medium">{category.name}</h3>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

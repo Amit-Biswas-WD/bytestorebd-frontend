@@ -10,8 +10,7 @@ import TopBrandProducts from "@/components/home/TopBrandProducts";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center">
-      Home
+    <main className="flex flex-col items-center justify-center">
       <div className="space-y-14 w-full">
         <FeaturedCategories />
         <NewTrends />
@@ -22,6 +21,6 @@ export default function Home() {
         <HomeAppliances />
         <TopBrandProducts />
       </div>
-    </div>
+    </main>
   );
 }

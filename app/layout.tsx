@@ -3,6 +3,7 @@ import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ReduxProvider from "@/providers/ReduxProvider";
 import QueryProvider from "@/providers/QueryProvider";
+import Navbar from "@/components/navbar/Navbar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,7 +32,10 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ReduxProvider>
-          <QueryProvider>{children}</QueryProvider>
+          <QueryProvider>
+            <Navbar />
+            {children}
+          </QueryProvider>
         </ReduxProvider>
       </body>
     </html>
