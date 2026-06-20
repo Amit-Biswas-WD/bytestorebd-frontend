@@ -1,6 +1,12 @@
 "use client";
 import FeaturedCategories from "@/components/home/FeaturedCategories";
+import FeaturedProducts from "@/components/home/FeaturedProducts";
+import GreatDealsOnAirConditioner from "@/components/home/GreatDealsOnAirConditioner";
+import HomeAppliances from "@/components/home/HomeAppliances";
+import NewArrival from "@/components/home/NewArrival";
 import NewTrends from "@/components/home/NewTrends";
+import RechargeableFan from "@/components/home/RechargeableFan";
+import TopBrandProducts from "@/components/home/TopBrandProducts";
 
 export default function Home() {
   return (
@@ -9,6 +15,12 @@ export default function Home() {
       <div className="">
         <FeaturedCategories />
         <NewTrends />
+        <FeaturedProducts />
+        <NewArrival />
+        <GreatDealsOnAirConditioner />
+        <RechargeableFan />
+        <HomeAppliances />
+        <TopBrandProducts />
       </div>
     </div>
   );

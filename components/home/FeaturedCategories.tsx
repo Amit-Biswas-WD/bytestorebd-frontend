@@ -1,4 +1,5 @@
 "use client";
+
 import { featuredCategories } from "@/lib/categories/categories";
 import Image from "next/image";
 
