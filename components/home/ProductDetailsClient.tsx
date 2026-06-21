@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { ShoppingCart, Truck } from "lucide-react";
 
 interface ColorVariant {
   name: string;
@@ -254,6 +255,30 @@ export default function ProductDetailsClient({
               +
             </button>
           </div>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex items-center gap-4 ">
+          {/* Shop Now Button */}
+          <button className="flex-1 py-3 px-6 rounded-full bg-[#F27F20] text-white font-medium text-base shadow-sm focus:outline-none">
+            Shop Now
+          </button>
+
+          {/* Add To Cart Button */}
+          <button className="flex-1 py-3 px-6 rounded-full border border-gray-200 bg-white text-black font-medium text-base shadow-sm focus:outline-none flex items-center justify-center gap-2">
+            <ShoppingCart size={18} strokeWidth={2} />
+            <span>Add To Cart</span>
+          </button>
+        </div>
+
+        {/* Delivery Information Bar */}
+        <div className="w-ful p-4 bg-white border border-gray-100 rounded-xl flex items-center gap-3 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+          {/* Delivery Truck Icon */}
+          <Truck className="w-6 h-6 text-black" strokeWidth={1.5} />
+
+          <p className="text-gray-900 font-normal text-base">
+            Delivery Timescale: <span className="font-semibold">3-5 Days</span>
+          </p>
         </div>
       </div>
     </div>
