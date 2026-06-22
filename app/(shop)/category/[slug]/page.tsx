@@ -40,6 +40,11 @@
 
 import CategoryPageClient from "../CategoryPageClient";
 
-export default function CategoryPage({ params }: { params: { slug: string } }) {
-  return <CategoryPageClient slug={params.slug} />;
+export default async function CategoryPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  return <CategoryPageClient slug={slug} />;
 }
