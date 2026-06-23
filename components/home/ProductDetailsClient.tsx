@@ -55,9 +55,9 @@ export default function ProductDetailsClient({
   }
 
   let activeData = {
-    price: product.currentPrice,
-    regularPrice: product.regularPrice || product.originalPrice || null,
-    image: product.imageSrc,
+    price: product.currentPrice ?? 0, // ★ ?? 0
+    regularPrice: product.regularPrice ?? product.originalPrice ?? null,
+    image: product.imageSrc ?? "",
     inStock: product.inStock ?? true,
     code: "AGL32679",
   };
@@ -77,10 +77,10 @@ export default function ProductDetailsClient({
 
     if (match) {
       activeData = {
-        price: match.currentPrice,
-        regularPrice: match.originalPrice || null,
-        image: match.imageSrc,
-        inStock: match.inStock,
+        price: match.currentPrice ?? 0, // ★ ?? 0
+        regularPrice: match.originalPrice ?? null,
+        image: match.imageSrc ?? product.imageSrc ?? "",
+        inStock: match.inStock ?? true,
         code: match.code || "AGL32679",
       };
     } else {
@@ -127,10 +127,10 @@ export default function ProductDetailsClient({
           <h1 className="text-[32px] font-semibold mb-4">{product.title}</h1>
 
           {/* Live Pricing Bar */}
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm sm:text-base ">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm sm:text-base">
             <div className="flex items-center gap-1">
-              <span className="text-2xl  ">
-                ৳ {activeData.price.toLocaleString()}
+              <span className="text-2xl">
+                ৳ {(activeData.price ?? 0).toLocaleString()} {/* ★ */}
               </span>
               <span className="text-xs sm:text-sm text-[#737373] font-normal">
                 (Cash Price)
@@ -142,14 +142,14 @@ export default function ProductDetailsClient({
             {activeData.regularPrice && (
               <>
                 <span className="text-[#737373]/60 line-through font-normal">
-                  ৳ {activeData.regularPrice.toLocaleString()}
+                  ৳ {(activeData.regularPrice ?? 0).toLocaleString()} {/* ★ */}
                 </span>
                 <span className="text-gray-300">|</span>
               </>
             )}
 
-            <div className="font-normal ">
-              <span className="">Availability:</span>{" "}
+            <div className="font-normal">
+              <span>Availability:</span>{" "}
               <span
                 className={
                   activeData.inStock
@@ -163,8 +163,8 @@ export default function ProductDetailsClient({
 
             <span className="text-gray-300">|</span>
 
-            <div className="font-normal ">
-              <span className="">Code:</span>{" "}
+            <div className="font-normal">
+              <span>Code:</span>{" "}
               <span className="text-[#555]">{activeData.code}</span>
             </div>
           </div>
@@ -175,7 +175,7 @@ export default function ProductDetailsClient({
           {/* Color Option Selector */}
           {product.colors && product.colors.length > 0 && (
             <div className={variantSelectorClass}>
-              <h3 className="text-base  text-[#111111] mb-4">Color:</h3>
+              <h3 className="text-base text-[#111111] mb-4">Color:</h3>
               <div className="flex flex-wrap gap-3">
                 {product.colors.map((color) => {
                   const isSelected = selectedColor === color.name;
@@ -208,7 +208,7 @@ export default function ProductDetailsClient({
           {/* Storage Option Selector */}
           {product.storage && product.storage.length > 0 && (
             <div className={variantSelectorClass}>
-              <h3 className="text-base  text-[#111111] mb-4">Storage:</h3>
+              <h3 className="text-base text-[#111111] mb-4">Storage:</h3>
               <div className="flex flex-wrap gap-3">
                 {product.storage.map((size) => {
                   const isSelected = selectedStorage === size;
@@ -237,7 +237,7 @@ export default function ProductDetailsClient({
 
         {/* Quantity Counter Selector */}
         <div className="space-y-3 pt-2">
-          <h3 className="text-base  text-[#111111]">Select Quantity:</h3>
+          <h3 className="text-base text-[#111111]">Select Quantity:</h3>
           <div className="inline-flex items-center bg-[#f3f4f6] rounded-full p-1.5 min-w-[140px] justify-between">
             <button
               type="button"
@@ -246,7 +246,7 @@ export default function ProductDetailsClient({
             >
               &minus;
             </button>
-            <span className="text-base  px-4 text-[#111111]">{quantity}</span>
+            <span className="text-base px-4 text-[#111111]">{quantity}</span>
             <button
               type="button"
               onClick={() => setQuantity((prev) => prev + 1)}
@@ -258,13 +258,10 @@ export default function ProductDetailsClient({
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-4 ">
-          {/* Shop Now Button */}
+        <div className="flex items-center gap-4">
           <button className="flex-1 py-3 px-6 rounded-full bg-[#F27F20] text-white font-medium text-base shadow-sm focus:outline-none">
             Shop Now
           </button>
-
-          {/* Add To Cart Button */}
           <button className="flex-1 py-3 px-6 rounded-full border border-gray-200 bg-white text-black font-medium text-base shadow-sm focus:outline-none flex items-center justify-center gap-2">
             <ShoppingCart size={18} strokeWidth={2} />
             <span>Add To Cart</span>
@@ -272,10 +269,8 @@ export default function ProductDetailsClient({
         </div>
 
         {/* Delivery Information Bar */}
-        <div className="w-ful p-4 bg-white border border-gray-100 rounded-xl flex items-center gap-3 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-          {/* Delivery Truck Icon */}
+        <div className="w-full p-4 bg-white border border-gray-100 rounded-xl flex items-center gap-3 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
           <Truck className="w-6 h-6 text-black" strokeWidth={1.5} />
-
           <p className="text-gray-900 font-normal text-base">
             Delivery Timescale: <span className="font-semibold">3-5 Days</span>
           </p>

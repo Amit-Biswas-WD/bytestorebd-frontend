@@ -1,14 +1,70 @@
-"use client";
+// "use client";
 
-import { productsCards } from "@/lib/cards/cards";
+// import { productsCards } from "@/lib/cards/cards";
+// import ProductCard from "../product/ProductCard";
+
+// const NewTrends = () => {
+//   return (
+//     <div className="site-container">
+//       <ProductCard products={productsCards} />
+//     </div>
+//   );
+// };
+
+// export default NewTrends;
+
+"use client";
+import { useQuery } from "@tanstack/react-query";
+import { api } from "@/lib/api";
 import ProductCard from "../product/ProductCard";
 
+interface RawProduct {
+  _id: string;
+  name: string;
+  images: string[];
+  slug: string;
+  variants: {
+    price: number;
+    originalPrice?: number;
+  }[];
+}
+
 const NewTrends = () => {
+  const { data, isLoading } = useQuery({
+    queryKey: ["products", "new-trends"],
+    queryFn: async () => {
+      const { data } = await api.get("/products?tags=new-trends&limit=10");
+      return data.data as RawProduct[];
+    },
+  });
+
+  const products = (data || []).map((p) => ({
+    id: p._id,
+    title: p.name,
+    imageSrc: p.images?.[0] || "",
+    currentPrice: p.variants?.[0]?.price || 0,
+    originalPrice: p.variants?.[0]?.originalPrice || null,
+    slug: p.slug,
+  }));
+
+  if (isLoading) {
+    return (
+      <div className="site-container">
+        <div className="flex gap-4 overflow-hidden">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div
+              key={i}
+              className="w-1/2 md:w-1/3 lg:w-1/4 flex-shrink-0 h-72 bg-gray-100 animate-pulse rounded-2xl"
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="site-container">
-      <ProductCard products={productsCards} />
-
-      {/* <ProductCard heading="Our New Trends" products={productsCards} /> */}
+      <ProductCard heading="New Trends" products={products} />
     </div>
   );
 };
