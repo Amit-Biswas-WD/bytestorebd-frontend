@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const FeaturedCategories = () => {
   return (
-    <section className="site-container md:mt-32 mt-16">
+    <section className="site-container">
       <h2 className="mb-8 lg:text-4xl md:text-3xl sm:text-2xl text-xl font-bold">
         Featured Categories
       </h2>

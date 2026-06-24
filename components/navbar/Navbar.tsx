@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import MegaMenu from "./MegaMenu";
+import MobileMenu from "./MobileMenu";
+import SearchBar from "./SearchBar";
 import { Menu } from "lucide-react";
 import { useState } from "react";
-import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -15,9 +16,10 @@ export default function Navbar() {
         <div className="site-container">
           {/* Top Navbar Row */}
           <div className="h-12 flex items-center justify-between gap-4">
-            <div className="text-xl font-bold text-[#F27F20] flex items-center gap-2">
+            {/* Logo + Hamburger */}
+            <div className="text-xl font-bold text-[#F27F20] flex items-center gap-2 flex-shrink-0">
               <button
-                className="block sm:block md:block lg:hidden"
+                className="block lg:hidden"
                 onClick={() => setMobileMenuOpen(true)}
               >
                 <Menu />
@@ -27,11 +29,13 @@ export default function Navbar() {
               </Link>
             </div>
 
-            <div className="flex-1 max-w-xl md:text-2xl sm:text-base text-xs">
-              SearchBar
+            {/* SearchBar */}
+            <div className="flex-1 max-w-xl">
+              <SearchBar />
             </div>
 
-            <div className="flex items-center gap-4 md:text-2xl sm:text-base text-xs">
+            {/* Icons */}
+            <div className="flex items-center gap-4 flex-shrink-0">
               WishlistIcon CartIcon
             </div>
           </div>
