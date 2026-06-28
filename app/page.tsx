@@ -1,4 +1,5 @@
 "use client";
+import AppleGadgetsSection from "@/components/home/FeatureGridSection";
 import FeaturedCategories from "@/components/home/FeaturedCategories";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import GreatDealsOnAirConditioner from "@/components/home/GreatDealsOnAirConditioner";
@@ -24,6 +25,7 @@ export default function Home() {
         <RechargeableFan />
         <HomeAppliances />
         <TopBrandProducts />
+        <AppleGadgetsSection />
       </div>
     </main>
   );
