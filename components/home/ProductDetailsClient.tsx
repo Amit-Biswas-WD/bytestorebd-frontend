@@ -19,7 +19,7 @@ interface ProductVariant {
 }
 
 interface Product {
-  id: number;
+  id: string;
   title: string;
   slug: string;
   imageSrc: string;
