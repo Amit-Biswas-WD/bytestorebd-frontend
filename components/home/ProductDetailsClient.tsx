@@ -107,7 +107,7 @@ export default function ProductDetailsClient({
     "flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-medium transition-all";
 
   return (
-    <div className="w-full flex flex-col md:flex-row gap-14 p-4 max-w-7xl mx-auto font-bold text-[#292929]">
+    <div className="w-full flex flex-col md:flex-row gap-14 site-container font-bold text-[#292929]">
       {/* Left Column: Image Section */}
       <div className="relative w-full max-w-[525px] aspect-square border rounded-2xl overflow-hidden bg-white flex-shrink-0">
         {activeData.image && (
