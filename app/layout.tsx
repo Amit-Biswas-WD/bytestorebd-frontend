@@ -4,6 +4,7 @@ import "./globals.css";
 import ReduxProvider from "@/providers/ReduxProvider";
 import QueryProvider from "@/providers/QueryProvider";
 import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/footer/footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -35,6 +36,7 @@ export default function RootLayout({
           <QueryProvider>
             <Navbar />
             {children}
+            <Footer/>
           </QueryProvider>
         </ReduxProvider>
       </body>
