@@ -266,8 +266,6 @@ export default function Footer() {
         </div>
       </div>
 
-   
-
       {/* ── Copyright ── */}
       <div
         style={{ borderTop: "1px solid #e5e7eb", backgroundColor: "#eeeeee" }}

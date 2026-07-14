@@ -224,7 +224,7 @@ export default async function ProductPage({ params }: Props) {
   }
 
   return (
-    <main className="site-container space-y-14 md:mt-32 mt-16">
+    <main className="site-container space-y-14 md:mt-32 my-16">
       <section aria-label="Product Information">
         <ProductDetailsClient product={productData} />
       </section>
