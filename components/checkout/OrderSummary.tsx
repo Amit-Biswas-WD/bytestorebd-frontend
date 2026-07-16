@@ -10,7 +10,7 @@ export default function OrderSummary() {
 
       {/* Product */}
       <div className="flex items-center gap-4">
-        <div className="relative h-16 w-16 overflow-hidden rounded-xl border">
+        <div className="relative h-20 w-20 overflow-hidden rounded-md border border-gray-300">
           <Image
             src="/products/iphone.png"
             alt="iPhone"
@@ -38,10 +38,10 @@ export default function OrderSummary() {
           <input
             type="text"
             placeholder="Apply Coupon"
-            className="flex-1 px-5 outline-none"
+            className="flex-1 px-2 outline-none text-black text-sm font-normal uppercase"
           />
 
-          <button className="m-1 rounded-full bg-black px-6 py-3 font-medium text-white transition hover:bg-gray-800">
+          <button className="m-1 cursor-pointer rounded-full bg-black px-3 py-2.5 font-normal text-white transition hover:bg-gray-800">
             Apply Coupon
           </button>
         </div>

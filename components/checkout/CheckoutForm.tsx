@@ -1,6 +1,6 @@
 "use client";
 import { useState, type ReactNode } from "react";
-import { Banknote, CreditCard } from "lucide-react";
+import { Banknote, CreditCard, Store, Truck } from "lucide-react";
 import { InputField } from "@/components/ui/input-field";
 
 export default function CheckoutForm() {
@@ -14,6 +14,9 @@ export default function CheckoutForm() {
   });
 
   const [paymentMethod, setPaymentMethod] = useState<"cash" | "online">("cash");
+  const [deliveryMethod, setDeliveryMethod] = useState<"courier" | "pickup">(
+    "courier",
+  );
 
   const [touched, setTouched] = useState({
     fullName: false,
@@ -69,13 +72,13 @@ export default function CheckoutForm() {
   }
 
   return (
-    <section className="rounded-3xl border border-gray-200 bg-white p-6 lg:p-8">
-      <h2 className="mb-8 text-xl font-bold text-[#171717]">
+    <section className="rounded-3xl border border-gray-200 bg-white p-6">
+      <h2 className="mb-3 text-xl font-bold text-tertiary">
         Delivery Information
       </h2>
 
       {/* Inputs */}
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-x-4 gap-y-3 md:grid-cols-2">
         <div>
           <InputField
             id="fullName"
@@ -159,7 +162,7 @@ export default function CheckoutForm() {
       </div>
 
       {/* Address */}
-      <div className="mt-6">
+      <div className="mt-3">
         <InputField
           id="address"
           label="Address"
@@ -177,7 +180,7 @@ export default function CheckoutForm() {
       </div>
 
       {/* Note */}
-      <div className="mt-6">
+      <div className="mt-3">
         <label className="mb-2 block text-sm font-medium">Note</label>
 
         <textarea
@@ -185,19 +188,19 @@ export default function CheckoutForm() {
           placeholder="For example: Leave the parcel with the neighbor if not available"
           value={formData.note}
           onChange={(event) => handleChange("note", event.target.value)}
-          className="w-full rounded-lg border border-input bg-background px-4 py-3 outline-none text-black font-normal"
+          className="w-full min-h-4 rounded-lg border border-input bg-background px-4 py-3 outline-none text-black font-normal"
         />
       </div>
 
       {/* Payment + Delivery */}
-      <div className="mt-10 grid gap-8 lg:grid-cols-2">
+      <div className="mt-4 grid w-full gap-8 lg:grid-cols-2">
         {/* Payment */}
-        <div>
-          <h3 className="mb-5 text-xl text-[#171717] font-bold">
+        <div className="w-full">
+          <h3 className="mb-3 text-xl font-bold text-tertiary">
             Payment Method
           </h3>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid w-full grid-cols-2 gap-4">
             <MethodCard
               active={paymentMethod === "cash"}
               title="Cash on Delivery"
@@ -210,6 +213,29 @@ export default function CheckoutForm() {
               title="Online Payment"
               icon={<CreditCard size={26} />}
               onSelect={() => setPaymentMethod("online")}
+            />
+          </div>
+        </div>
+
+        {/* Delivery */}
+        <div className="w-full">
+          <h3 className="mb-3 text-xl font-bold text-tertiary">
+            Delivery Method
+          </h3>
+
+          <div className="grid w-full grid-cols-2 gap-4">
+            <MethodCard
+              active={deliveryMethod === "courier"}
+              title="Courier Service"
+              icon={<Truck size={26} />}
+              onSelect={() => setDeliveryMethod("courier")}
+            />
+
+            <MethodCard
+              active={deliveryMethod === "pickup"}
+              title="Shop Pickup"
+              icon={<Store size={26} />}
+              onSelect={() => setDeliveryMethod("pickup")}
             />
           </div>
         </div>
@@ -234,10 +260,10 @@ function MethodCard({
   return (
     <label
       onClick={onSelect}
-      className={`relative cursor-pointer rounded-2xl border p-5 transition
+      className={`relative block w-full cursor-pointer rounded-2xl border p-5 transition
       ${
         active
-          ? "border-2 border-[#E36313] bg-[#FFF4EC]"
+          ? "border border-[#E36313] bg-[#FFF4EC]"
           : "border-gray-200 hover:border-orange-300"
       }`}
     >
