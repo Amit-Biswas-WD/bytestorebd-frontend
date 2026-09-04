@@ -131,6 +131,7 @@ export default function ProductDetailsClient({
         name: product.title,
         price: activeData.price,
         image: activeData.image,
+        slug: product.slug,
         quantity,
       }),
     );
@@ -373,9 +374,12 @@ export default function ProductDetailsClient({
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <h4 className="truncate text-[15px] font-medium text-[#333]">
+                        <Link
+                          href={`/product/${item.slug || item._id}`}
+                          className="block truncate text-[15px] font-medium text-[#333] transition-colors hover:text-[#F27F20]"
+                        >
                           {item.name}
-                        </h4>
+                        </Link>
                         <p className="mt-2 text-[15px] font-semibold text-[#333]">
                           ৳ {item.price.toLocaleString()}
                         </p>
